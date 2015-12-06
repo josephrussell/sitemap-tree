@@ -1,6 +1,22 @@
-# Sitemap Tree
+Sitemap Tree
+============
 
 Sitemap Tree is a node module for building sitemap and associated index files.
+
+Installation
+------------
+
+Installation via [npm](https://github.com/isaacs/npm/):
+
+    npm install --save sitemap-tree
+    
+Require in script
+```javascript
+var Sitemap = require('sitemap-tree');
+```    
+
+Usage
+------------
 
 Example with a single sitemap:
 
@@ -18,7 +34,7 @@ Sitemap.create({destinationPath: "tmp"}).build({
         "priority": 0.8
     }]
 }, function(error) {
-    // ./tmp/sitemap1.xml file created
+    // ./tmp/sitemap1.xml created, http://www.sitemaps.org/protocol.html#xmlTagDefinitions
 });
 ```
 
@@ -46,6 +62,13 @@ Sitemap.create({destinationPath: "tmp"}).build({
         }
     ]
 }, function(error) {
-    // ./tmp/index.xml, ./tmp/sitemap2.xml created
+    // ./tmp/index.xml created, http://www.sitemaps.org/protocol.html#sitemapIndexTagDefinitions
+    // ./tmp/sitemap2.xml created, http://www.sitemaps.org/protocol.html#xmlTagDefinitions
 });
 ```
+
+Todo
+------------
+* Add file based caching support by checking timestamps
+* Make writing files optional
+* Add more documentation on configuration
