@@ -1,0 +1,26 @@
+{
+  "name": "sitemap-tree",
+  "description": "sitemap xml file generator",
+  "version": "0.0.1",
+  "author": "Joseph Russell",
+  "keywords": [
+    "sitemap",
+    "seo"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "xml": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "rimraf": "^2.4.4"
+  },
+  "license": "MIT"
+}
