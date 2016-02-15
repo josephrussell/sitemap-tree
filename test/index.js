@@ -92,6 +92,38 @@ describe("sitemap", function() {
         });
     });
 
+    it("is created with with images", function (done) {
+        Sitemap.create(options).build({
+            "type": "sitemap",
+            "name": "images",
+            "path": "images.xml",
+            "loc":  "http://website.com/sitemap/images.xml",
+            "lastmod": "2015-08-31T11:00:23-04:00",
+            "urls": [{
+                "loc":  "http://website.com/url1",
+                "lastmod": "2015-08-31T11:00:23-04:00",
+                "changefreq": "daily",
+                "priority": 0.8,
+                "images": [{
+                    "loc": "http://website.com/image1",
+                    "title":"The first image",
+                    "geo_location":"New York, NY, USA"
+                },
+                {
+                    "loc": "http://website.com/image2",
+                    "title":"The second image",
+                    "caption":"This is more information about the second image",
+                    "geo_location":"New York, NY, USA"
+                }]
+            }]
+        }, function(error) {
+            fs.readFile("tmp/images.xml", "utf8", function(error, xml) {
+                expect(xml).to.equal("<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\"><url><loc>http://website.com/url1</loc><lastmod>2015-08-31T11:00:23-04:00</lastmod><changefreq>daily</changefreq><priority>0.8</priority><image:image><image:loc>http://website.com/image1</image:loc><image:title>The first image</image:title><image:geo_location>New York, NY, USA</image:geo_location></image:image><image:image><image:loc>http://website.com/image2</image:loc><image:title>The second image</image:title><image:caption>This is more information about the second image</image:caption><image:geo_location>New York, NY, USA</image:geo_location></image:image></url></urlset>");
+                done();
+            });
+        });
+    });
+
     after(function(done) {
         rimraf("tmp", function(error) {
             done();

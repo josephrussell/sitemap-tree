@@ -67,8 +67,3 @@ Sitemap.create({destinationPath: "tmp"}).build({
 });
 ```
 
-Todo
-------------
-* Add file based caching support by checking timestamps
-* Make writing files optional
-* Add more documentation on configuration
